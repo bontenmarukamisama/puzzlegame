@@ -3,11 +3,18 @@
 #define PI 3.141592654
 #define WIDTH 120
 #define HIGHT 90
+#define STARTx 100
+#define STARTy 350
+#define STARTw 200
+#define STARTh 86
+POINT MousePoint;
 
 //int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//ChangeWindowMode(TRUE), DxLib_Init(), SetDrawScreen(DX_SCREEN_BACK); //ウィンドウモード変更と初期化と裏画面設定
 
-	
+int Mouse;
+
+//GetMousePoint(&mouseX, &mouseY);//マウスカーソルの位置を取得
 
 typedef enum {
 	eScene_Menu,    //メニュー画面
@@ -20,21 +27,26 @@ static int Scene = eScene_Menu;    //現在の画面(シーン)
 
 //シーンを更新する
 void UpdateScene() {
-	DrawString(0, 20, "Gキーでゲーム画面、Cキーで設定、Mキーでメニュー画面になります。", GetColor(255, 255, 255));
-	if (CheckHitKey(KEY_INPUT_G) != 0) {
-		Scene = eScene_Game;
+	Mouse = GetMouseInput();
+	DrawString(0, 20, "左クリックでゲーム画面、右クリックで終了、", GetColor(255, 255, 255));
+	if (Mouse & MOUSE_INPUT_LEFT) {
+		int mouseX, mouseY;
+		GetMousePoint(&mouseX, &mouseY);
+		if (mouseX >= STARTx && mouseX < (STARTx + STARTw) && mouseY >= STARTy && mouseY < (STARTy + STARTh)) {
+			int mouseX, mouseY;
+			Scene = eScene_Game;
+		}
 	}
-	if (CheckHitKey(KEY_INPUT_C) != 0) {
-		Scene = eScene_Config;
-	}
-	if (CheckHitKey(KEY_INPUT_M) != 0) {
-		Scene = eScene_Menu;
+	if (Mouse & MOUSE_INPUT_RIGHT) {
+		DxLib_End(); // DXライブラリ終了処理
 	}
 }
 
 //メニュー画面
 void Menu() {
 	DrawString(0, 0, "１５パズル（仮）", GetColor(255, 255, 255));
+	int Start = LoadGraph("画像/noboru.jpg");
+	DrawGraph(STARTx, STARTy, Start, TRUE); // 背景を描画
 }
 
 //ゲーム画面
