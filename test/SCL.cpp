@@ -41,7 +41,6 @@ void Menu() {
 void Game() {
 	DrawString(0, 0, "ƒQ[ƒ€‰æ–Ê‚Å‚·B", GetColor(255, 255, 255));
 
-
 		LoadDivGraph("‰æ‘œ/neko2.png", 16, 4, 4, WIDTH, HIGHT, image); // ‰æ‘œ‚Ì•ªŠ„“Ç‚İ‚İ
 		int haikei = LoadGraph("‰æ‘œ/haikei.png");
 		int waku = LoadGraph("‰æ‘œ/waku2.png");
@@ -49,11 +48,18 @@ void Game() {
 		DrawGraph(0, 0, haikei, TRUE); // ”wŒi‚ğ•`‰æ
 		DrawGraph(nx - 10, ny - 10, waku, FALSE); // ”wŒi‚ğ•`‰æ
 
+		
+		int Mouse = GetMouseInput();
+		int GetMousePoint(int* XBuf, int* YBuf);
+		if (Mouse & MOUSE_INPUT_LEFT) {
+			DrawString(400, 0, "ƒNƒŠƒbƒN“ü—Í‚ª‚³‚ê‚Ü‚µ‚½", GetColor(255, 255, 255));
+		}
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				DrawGraph(nx + (j * WIDTH), ny + (i * HIGHT), image[(i*4)+j], TRUE);
+				DrawGraph(nx + (j * WIDTH), ny + (i * HIGHT), image[(i * 4) + j], TRUE);
 			}
 		}
+	
 }
 
 //İ’è‰æ–Ê
