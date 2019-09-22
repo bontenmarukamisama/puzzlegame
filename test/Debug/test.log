@@ -1,8 +1,1 @@
-﻿  SCL.cpp
-<<<<<<< .merge_file_a10572
-C:\Users\フランベルジュ\Desktop\test2\SCL.cpp(36,8): warning C4101:  'mouseX': ローカル変数は 1 度も使われていません。
-C:\Users\フランベルジュ\Desktop\test2\SCL.cpp(36,16): warning C4101:  'mouseY': ローカル変数は 1 度も使われていません。
-  test.vcxproj -> C:\Users\フランベルジュ\Desktop\test2\Debug\test.exe
-=======
-  test.vcxproj -> C:\Users\nwuser.DA\Documents\puzzlegame\test\Debug\test.exe
->>>>>>> .merge_file_a12920
+﻿  test.vcxproj -> C:\Users\nwuser.DA\Documents\seusaku\test\Debug\test.exe
