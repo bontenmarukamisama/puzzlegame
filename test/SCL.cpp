@@ -14,6 +14,7 @@ POINT MousePoint;
 
 int Mouse;
 
+
 //GetMousePoint(&mouseX, &mouseY);//マウスカーソルの位置を取得
 
 typedef enum {
@@ -47,10 +48,24 @@ void Menu() {
 	DrawString(0, 0, "１５パズル（仮）", GetColor(255, 255, 255));
 	int Start = LoadGraph("画像/noboru.jpg");
 	DrawGraph(STARTx, STARTy, Start, TRUE); // 背景を描画
+	Mouse = GetMouseInput();
+	DrawString(0, 20, "左クリックでゲーム画面、右クリックで終了、", GetColor(255, 255, 255));
+	if (Mouse & MOUSE_INPUT_LEFT) {
+		int mouseX, mouseY;
+		GetMousePoint(&mouseX, &mouseY);
+		if (mouseX >= STARTx && mouseX < (STARTx + STARTw) && mouseY >= STARTy && mouseY < (STARTy + STARTh)) {
+			int mouseX, mouseY;
+			Scene = eScene_Game;
+		}
+	}
+	if (Mouse & MOUSE_INPUT_RIGHT) {
+		DxLib_End(); // DXライブラリ終了処理
+	}
 }
 
 //ゲーム画面
 void Game() {
+	int CheckHitKey(int KeyCode);
 	DrawString(0, 0, "ゲーム画面です。", GetColor(255, 255, 255));
 
 
@@ -64,6 +79,13 @@ void Game() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				DrawGraph(nx + (j * WIDTH), ny + (i * HIGHT), image[(i*4)+j], TRUE);
+			}
+		}
+		while (1) {
+			ProcessMessage();
+			if (CheckHitKey(KEY_INPUT_ESCAPE) == 1) {
+				Scene = eScene_Config;
+				break;
 			}
 		}
 }
