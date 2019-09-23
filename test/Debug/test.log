@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 ﻿  SCL.cpp
 C:\Users\フランベルジュ\Documents\puzzlegame\test\SCL.cpp(37,8): warning C4101:  'mouseX': ローカル変数は 1 度も使われていません。
 C:\Users\フランベルジュ\Documents\puzzlegame\test\SCL.cpp(37,16): warning C4101:  'mouseY': ローカル変数は 1 度も使われていません。
 C:\Users\フランベルジュ\Documents\puzzlegame\test\SCL.cpp(57,8): warning C4101:  'mouseX': ローカル変数は 1 度も使われていません。
 C:\Users\フランベルジュ\Documents\puzzlegame\test\SCL.cpp(57,16): warning C4101:  'mouseY': ローカル変数は 1 度も使われていません。
 LINK : fatal error LNK1168: ファイル C:\Users\フランベルジュ\Documents\puzzlegame\test\Debug\test.exe を開いて書き込むことができません。
+=======
+﻿  test.vcxproj -> C:\Users\nwuser.DA\Documents\seusaku\test\Debug\test.exe
+>>>>>>> origin/sasaki
